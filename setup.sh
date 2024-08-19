@@ -74,8 +74,9 @@ if [ "$ACTION" = "start" ]; then
     # Remove any existing container with the same name
     if [ "$(docker ps -q -f name=$IMAGE_NAME)" ]; then
         echo "Stopping and removing existing container..."
-        docker stop $IMAGE_NAME
-        docker rm $IMAGE_NAME
+        sudo aa-remove-unknown
+        sudo docker stop $IMAGE_NAME
+        sudo docker rm $IMAGE_NAME
     fi
     
     # Run the Docker container
@@ -97,8 +98,8 @@ if [ "$ACTION" = "start" ]; then
 elif [ "$ACTION" = "stop" ]; then
     echo "Stopping and removing Docker container..."
     if [ "$(docker ps -q -f name=$IMAGE_NAME)" ]; then
-        docker stop $IMAGE_NAME
-        docker rm $IMAGE_NAME
+        sudo docker stop $IMAGE_NAME
+        sudo docker rm $IMAGE_NAME
         echo "Container stopped and removed."
     else
         echo "No running container found with the name $IMAGE_NAME."

@@ -7,7 +7,7 @@ def get_snowflake_connection():
     conn = snowflake.connector.connect(
         user='ISURU14',
         password='Isuru1214.',
-        account='KRNJCVN.DD96128',
+        account='krnjcvn-dd96128',
         warehouse='COMPUTE_WH',
         database='SYSTEM_SERVICES',
         schema='ELASTICSEARCH'
